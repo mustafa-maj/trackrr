@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,7 +17,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class HelloController {
+public class Controller {
     @FXML
     private TextField usernameTextField;
 
@@ -33,7 +32,7 @@ public class HelloController {
         if (!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()){
             if (validateLogin()){
                 try{
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("dashboard.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("dashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 850, 600);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setScene(scene);

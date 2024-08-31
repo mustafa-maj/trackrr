@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="362.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
          <children>
@@ -38,9 +37,6 @@
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
-                     <light>
-                        <Light.Distant />
-                     </light>
                   </Lighting>
                </effect>
             </Label>
@@ -53,9 +49,6 @@
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
-                     <light>
-                        <Light.Distant />
-                     </light>
                   </Lighting>
                </effect>
             </Label>
