@@ -12,12 +12,13 @@ import javafx.scene.control.PasswordField;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Controller {
+public class LoginController {
     @FXML
     private TextField usernameTextField;
 
@@ -32,7 +33,7 @@ public class Controller {
         if (!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()){
             if (validateLogin()){
                 try{
-                    FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("dashboard.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("dashboard.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 850, 600);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
@@ -47,7 +48,6 @@ public class Controller {
             loginMessageLabel.setText("Please enter username or password");
         }
     }
-
 
     public boolean validateLogin(){
         DatabaseConnection connectNow = new DatabaseConnection();
