@@ -1,16 +1,9 @@
 package com.example.app;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -126,6 +119,7 @@ public class DashboardController {
                 !genderLabel.getText().isBlank() && !emailLabel.getText().isBlank() && validateEmployeeID() && validatePhone()){
             if (validateAdd()){
                 successFailLabel.setText("Addition Success");
+                refreshTableView();
             }
         }
         else{
@@ -220,11 +214,18 @@ public class DashboardController {
                 !genderLabel.getText().isBlank() && !emailLabel.getText().isBlank() && validateEmployeeID() && validatePhone()){
             if (validateUpdate()){
                 successFailLabel.setText("Update Success");
+                refreshTableView();
             }
         }
         else{
             if (successFailLabel.getText().isBlank())
                 successFailLabel.setText("Field can not be blank");
         }
+    }
+
+    private void refreshTableView() {
+        employeeList.clear(); // Clear the current data
+        loadEmployeeData(); // Load the updated data from the database
+        employeeTableView.setItems(employeeList); // Set the new data in the TableView
     }
 }
