@@ -25,21 +25,19 @@
                      <children>
                         <AnchorPane layoutX="-17.0" prefHeight="600.0" prefWidth="193.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button layoutX="27.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="All Employees" />
-                              <Button layoutX="27.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Remove Employee" />
-                              <ImageView fitHeight="131.0" fitWidth="138.0" layoutX="32.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="127.0" fitWidth="144.0" layoutX="24.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/logo.jpg" />
                                  </image>
                               </ImageView>
-                              <Label alignment="CENTER" layoutX="16.0" layoutY="556.0" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: red;" text="Copyright (c). All Rights Reserved.">
+                              <Label alignment="CENTER" layoutX="16.0" layoutY="387.0" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: red;" text="Copyright (c). All Rights Reserved.">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="42.0" layoutY="131.0" prefHeight="27.0" prefWidth="108.0" text="Main Menu">
+                              <Label alignment="CENTER" layoutX="20.0" layoutY="109.0" prefHeight="64.0" prefWidth="158.0" text="Main Menu">
                                  <font>
-                                    <Font name="SimSun" size="24.0" />
+                                    <Font name="Chiller" size="45.0" />
                                  </font>
                                  <effect>
                                     <Lighting>
@@ -50,7 +48,6 @@
                                  </effect>
                               </Label>
                               <Line endX="70.19998168945312" endY="-27.800033569335938" layoutX="95.0" layoutY="194.0" startX="-67.9071273803711" startY="-27.800024032592773" />
-                              <Button layoutX="27.0" layoutY="358.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Find Employees" />
                               <Label layoutX="20.0" layoutY="28.0" prefHeight="44.0" prefWidth="161.0" text="Welcome!">
                                  <font>
                                     <Font name="Britannic Bold" size="35.0" />
@@ -66,23 +63,30 @@
                      <children>
                         <AnchorPane layoutX="-13.6" prefHeight="600.0" prefWidth="656.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="12.0" layoutY="15.0" prefHeight="287.0" prefWidth="618.0" style="-fx-background-color: lightgrey;">
+                              <AnchorPane layoutX="5.0" layoutY="14.0" prefHeight="287.0" prefWidth="646.0" style="-fx-background-color: lightgrey;">
                                  <children>
-                                    <TableView fx:id="employeeTableView" layoutX="8.0" layoutY="50.0" prefHeight="210.0" prefWidth="604.0">
+                                    <TableView fx:id="employeeTableView" layoutX="8.0" layoutY="50.0" prefHeight="227.0" prefWidth="630.0">
                                       <columns>
                                         <TableColumn fx:id="employeeIDColumn" prefWidth="79.199951171875" text="Employee ID" />
                                         <TableColumn fx:id="firstNameColumn" prefWidth="88.0" text="First Name" />
-                                          <TableColumn fx:id="lastNameColumn" prefWidth="80.7999267578125" text="Last Name" />
-                                          <TableColumn fx:id="positionColumn" prefWidth="61.599945068359375" text="Position" />
-                                          <TableColumn fx:id="genderColumn" prefWidth="60.0" text="Gender" />
-                                          <TableColumn fx:id="phoneColumn" prefWidth="72.79998779296875" text="Phone #" />
-                                          <TableColumn fx:id="emailColumn" prefWidth="160.0001220703125" text="Email" />
+                                          <TableColumn fx:id="lastNameColumn" prefWidth="88.79998779296875" text="Last Name" />
+                                          <TableColumn fx:id="positionColumn" prefWidth="67.99996948242188" text="Position" />
+                                          <TableColumn fx:id="genderColumn" prefWidth="56.800048828125" text="Gender" />
+                                          <TableColumn fx:id="phoneColumn" prefWidth="78.39996337890625" text="Phone #" />
+                                          <TableColumn fx:id="emailColumn" prefWidth="168.79989624023438" text="Email" />
                                       </columns>
                                     </TableView>
-                                    <TextField layoutX="8.0" layoutY="14.0" prefHeight="26.0" prefWidth="203.0" text="Search" />
+                                    <TextField fx:id="nameSearchField" layoutX="8.0" layoutY="14.0" prefHeight="26.0" prefWidth="138.0" promptText="Search" />
+                                    <Button layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByID" prefHeight="26.0" prefWidth="46.0" text="By ID" />
+                                    <Button layoutX="209.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByName" prefHeight="26.0" prefWidth="64.0" text="By Name" />
+                                    <Button layoutX="278.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByPosition" prefHeight="26.0" prefWidth="77.0" text="By Position" />
+                                    <Button layoutX="364.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByGender" prefHeight="26.0" prefWidth="72.0" text="By Gender" />
+                                    <Button layoutX="442.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByPhone" prefHeight="26.0" prefWidth="76.0" text="By Phone #" />
+                                    <Button layoutX="525.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchByEmail" text="By Email" />
+                                    <Button layoutX="593.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshTableView" text="Reset" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="12.0" layoutY="312.0" prefHeight="275.0" prefWidth="618.0" style="-fx-background-color: lightgrey;">
+                              <AnchorPane layoutX="41.0" layoutY="307.0" prefHeight="285.0" prefWidth="566.0" style="-fx-background-color: lightgrey;">
                                  <children>
                                     <Label layoutX="20.0" layoutY="21.0" text="First Name:">
                                        <font>
@@ -114,29 +118,34 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="emailLabel" layoutX="102.0" layoutY="216.0" />
-                                    <Button layoutX="383.0" layoutY="210.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="26.0" prefWidth="146.0" text="Add Employee">
+                                    <Button layoutX="375.0" layoutY="209.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="37.0" prefWidth="157.0" text="Add Employee">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="383.0" layoutY="162.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="26.0" prefWidth="146.0" text="Update Employee">
+                                    <Button layoutX="375.0" layoutY="161.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="37.0" prefWidth="156.0" text="Update Employee">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="329.0" layoutY="21.0" text="Gender:">
+                                    <Label layoutX="305.0" layoutY="25.0" text="Gender:">
                                        <font>
                                           <Font name="Calibri" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="genderLabel" layoutX="403.0" layoutY="17.0" />
-                                    <Label layoutX="309.0" layoutY="71.0" text="Employee ID:">
+                                    <TextField fx:id="genderLabel" layoutX="379.0" layoutY="21.0" />
+                                    <Label layoutX="285.0" layoutY="75.0" text="Employee ID:">
                                        <font>
                                           <Font name="Calibri" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="employeeIDLabel" layoutX="403.0" layoutY="67.0" />
-                                    <Label fx:id="successFailLabel" layoutX="382.0" layoutY="117.0" prefHeight="26.0" prefWidth="174.0" textFill="#d40a0a" />
+                                    <TextField fx:id="employeeIDLabel" layoutX="379.0" layoutY="71.0" />
+                                    <Label fx:id="successFailLabel" layoutX="42.0" layoutY="252.0" prefHeight="26.0" prefWidth="498.0" textAlignment="CENTER" textFill="#d40a0a" />
+                                    <Button layoutX="375.0" layoutY="113.0" mnemonicParsing="false" onAction="#removeButtonOnAction" prefHeight="37.0" prefWidth="156.0" text="Remove Employee">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </children>

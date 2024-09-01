@@ -10,8 +10,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -20,6 +18,9 @@ public class DashboardController {
 
     @FXML
     private Label successFailLabel;
+
+    @FXML
+    private TextField nameSearchField;
 
     @FXML
     private TextField firstNameLabel;
@@ -174,6 +175,30 @@ public class DashboardController {
         return false;
     }
 
+    public boolean validateDelete(){
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String updateQuery  = "DELETE FROM parks_and_recreation.employee_data WHERE " +
+                "firstName = '" + firstNameLabel.getText() + "', " +
+                "lastName = '" + lastNameLabel.getText() + "', " +
+                "position = '" + positionLabel.getText() + "', " +
+                "gender = '" + genderLabel.getText() + "', " +
+                "phone = '" + phoneLabel.getText() + "', " +
+                "email = '" + emailLabel.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            int result = statement.executeUpdate(updateQuery);
+            return true;
+        } catch (Exception e){
+            successFailLabel.setText("Details do not meet criteria! Try Again");
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public boolean validateEmployeeID(){
         // Validate that employeeID is not empty and is a valid integer
         String employeeIDText = employeeIDLabel.getText();
@@ -207,7 +232,185 @@ public class DashboardController {
         }
         return true;
     }
+    @FXML
+    protected void searchByName(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
 
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE firstName = '" + nameSearchField.getText() + "' OR lastName = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
+
+    @FXML
+    protected void searchByGender(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE gender = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
+
+    @FXML
+    protected void searchByPhone(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE phone = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
+
+    @FXML
+    protected void searchByEmail(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE email = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
+
+    @FXML
+    protected void searchByPosition(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE position = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
+
+    @FXML
+    protected void searchByID(){
+        employeeList.clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM parks_and_recreation.employee_data WHERE employeeID = '" + nameSearchField.getText() + "'";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                employeeList.add(new Employee(
+                        resultSet.getInt("employeeID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("position"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("phone"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        employeeTableView.setItems(employeeList);
+    }
     @FXML
     protected void updateButtonOnAction(ActionEvent event) {
         if (!firstNameLabel.getText().isBlank() && !lastNameLabel.getText().isBlank() && !positionLabel.getText().isBlank() &&
@@ -223,9 +426,25 @@ public class DashboardController {
         }
     }
 
-    private void refreshTableView() {
+    @FXML
+    protected void removeButtonOnAction(ActionEvent event) {
+        if (!firstNameLabel.getText().isBlank() && !lastNameLabel.getText().isBlank() && !positionLabel.getText().isBlank() &&
+                !genderLabel.getText().isBlank() && !emailLabel.getText().isBlank() && validateEmployeeID() && validatePhone()){
+            if (validateDelete()){
+                successFailLabel.setText("Removal Success");
+                refreshTableView();
+            }
+        }
+        else{
+            if (successFailLabel.getText().isBlank())
+                successFailLabel.setText("Field can not be blank");
+        }
+    }
+    @FXML
+    protected void refreshTableView() {
         employeeList.clear(); // Clear the current data
         loadEmployeeData(); // Load the updated data from the database
         employeeTableView.setItems(employeeList); // Set the new data in the TableView
+        nameSearchField.clear();
     }
 }
