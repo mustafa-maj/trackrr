@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,6 +26,14 @@ public class LoginController {
 
     @FXML
     private Label loginMessageLabel;
+
+    public void setUsernameTextField(TextField usernameTextField) {
+        this.usernameTextField = usernameTextField;
+    }
+
+    public void setPasswordPasswordField(PasswordField passwordPasswordField) {
+        this.passwordPasswordField = passwordPasswordField;
+    }
 
     @FXML
     protected void loginButtonOnAction(ActionEvent event) {

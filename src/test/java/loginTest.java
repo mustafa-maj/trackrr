@@ -1,18 +1,33 @@
+import com.example.app.LoginController;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class loginTest {
 
+    private LoginController loginController;
+
+    @BeforeEach
+    public void setUp(){
+        loginController = new LoginController();
+    }
+
     @Test
-    public void testSomeFunctionality() {
+    public void testLoginSuccess() {
         // Arrange
-        int expected = 5;
+        loginController.setUsernameTextField(new TextField("mushi"));
+        PasswordField passwordField = new PasswordField();
+        passwordField.setText("admin");
+        loginController.setPasswordPasswordField(passwordField);
+
 
         // Act
-        int actual = 2 + 3;
+        boolean actual = loginController.validateLogin();
 
         // Assert
-        assertEquals(expected, actual);
+        assertEquals(true, actual);
     }
 
     @Test
